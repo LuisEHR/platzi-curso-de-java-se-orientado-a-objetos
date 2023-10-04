@@ -1,27 +1,16 @@
-public class Patient {
+public class Patient extends User {
     // Atributos
-    private static int id;
-    private String name;
-    private String email;
-    private String address;
-    private String phoneNumber;
     private String birthday;
     private double weight;
     private double height;
     private String blood;
 
-    /**
-     * Metodo constructor de un objeto de tipo Patient.
-     * @param name
-     * @param email
-     */
-    public Patient(String name, String email) {
-        this.name = name;
-        this.email = email;
+    // Constructor
+    Patient(String name, String email) {
+        super(name, email);
     }
 
-    /* Getters & Setters*/
-
+    // Getters & Setters
     public String getWeight() {
         return this.weight + " Kg.";
     }
@@ -30,57 +19,12 @@ public class Patient {
         this.weight = weight;
     }
 
-
     public String getHeight() {
         return height + " Mts.";
     }
 
     public void setHeight(double height) {
         this.height = height;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        if (phoneNumber.length() != 8) {
-            System.out.println("El numero telefonico debe contener 8 digitos.");
-        } else {
-            this.phoneNumber = phoneNumber;
-        }
     }
 
     public String getBirthday() {
@@ -97,5 +41,20 @@ public class Patient {
 
     public void setBlood(String blood) {
         this.blood = blood;
+    }
+
+    // Metodos
+
+    /**
+     * Sobrescribiendo el metodo toString() de User.
+     * @return super.toString() + datos del paciente.
+     */
+    @Override
+    public String toString() {
+        return super.toString() +
+                "\nAge: " + birthday +
+                "\nWeight: " + getWeight() +
+                "\nHeight: " + getHeight() +
+                "\nBlood: " + blood;
     }
 }
