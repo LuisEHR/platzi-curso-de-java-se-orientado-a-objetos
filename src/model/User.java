@@ -1,4 +1,6 @@
-public class User {
+package model;
+
+public abstract class User {
     // Atributos
     private int id;
     private String name;

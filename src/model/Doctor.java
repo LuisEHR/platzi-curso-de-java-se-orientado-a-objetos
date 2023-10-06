@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -6,7 +8,7 @@ public class Doctor extends User {
     private String speciality;
 
     // Constructor
-    Doctor(String name, String email) {
+    public Doctor(String name, String email) {
         super(name, email);
     }
 
@@ -22,10 +24,10 @@ public class Doctor extends User {
     // Metodos
 
     /**
-     * Muestra en pantalla la especialidad de un objeto de tipo Doctor.
+     * Muestra en pantalla la especialidad de un objeto de tipo model.Doctor.
      */
     public void showSpeciality() {
-        System.out.println("Doctor Speciality: " + speciality);
+        System.out.println("model.Doctor Speciality: " + speciality);
     }
 
     /**
@@ -47,7 +49,7 @@ public class Doctor extends User {
     }
 
     /**
-     * Sobrescribiendo el metodo toString() de User.
+     * Sobrescribiendo el metodo toString() de model.User.
      * @return Datos del doctor.
      */
     @Override

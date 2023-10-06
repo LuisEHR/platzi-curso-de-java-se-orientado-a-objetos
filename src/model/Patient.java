@@ -1,3 +1,5 @@
+package model;
+
 public class Patient extends User {
     // Atributos
     private String birthday;
@@ -6,7 +8,7 @@ public class Patient extends User {
     private String blood;
 
     // Constructor
-    Patient(String name, String email) {
+    public Patient(String name, String email) {
         super(name, email);
     }
 
@@ -46,7 +48,7 @@ public class Patient extends User {
     // Metodos
 
     /**
-     * Sobrescribiendo el metodo toString() de User.
+     * Sobrescribiendo el metodo toString() de model.User.
      * @return super.toString() + datos del paciente.
      */
     @Override
