@@ -1,11 +1,14 @@
 package model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Doctor extends User {
     // Atributos
     private String speciality;
+    private ArrayList<AvailableAppointment> availableAppointments = new ArrayList<>();
 
     // Constructor
     public Doctor(String name, String email) {
@@ -35,8 +38,7 @@ public class Doctor extends User {
      * @param date Fecha disponible
      * @param time Horario disponible
      */
-    ArrayList<AvailableAppointment> availableAppointments = new ArrayList<>();
-    public void addAvailableAppointment(Date date, String time) {
+    public void addAvailableAppointment(String date, String time) {
         availableAppointments.add(new AvailableAppointment(date, time));
     }
 
@@ -59,15 +61,26 @@ public class Doctor extends User {
                 "\nAvailable: " + availableAppointments.toString();
     }
 
+    @Override
+    public void showDataUser() {
+        System.out.println("Empleado del Hospital: Cruz Roja");
+        System.out.println("Departamento: Oncología");
+    }
+
     public static class AvailableAppointment {
         // Atributos
         private int id;
         private Date date;
         private String time;
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
         // Constructor
-        public AvailableAppointment(Date date, String time) {
-            this.date = date;
+        public AvailableAppointment(String date, String time) {
+            try {
+                this.date = format.parse(date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             this.time = time;
         }
 
@@ -76,8 +89,12 @@ public class Doctor extends User {
             return id;
         }
 
-        public Date getDate() {
+        public Date getDate(String DATE) {
             return date;
+        }
+
+        public String getDate() {
+            return format.format(date);
         }
 
         public String getTime() {
